@@ -20,5 +20,6 @@ from movie import views as uniCronos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', uniCronos.home),
+    path('', uniCronos.home, name='home'),  # Definir la ruta para la página principal
+    path('about/', uniCronos.about, name='about'),
 ]

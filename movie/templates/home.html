@@ -1,3 +1,18 @@
-<!--<h1>Welcome to home page</h1>-->
-<h1>bienvenido a esta pagina, {{name}}</h1>
-<h2>esto es todo</h2>
+<!-- myapp/templates/about.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About</title>
+    <style>
+        /* Agrega estilos CSS para cambiar el color del nombre */
+        h1 span {
+            color: blue;  /* Cambia el color a tu preferencia, por ejemplo, 'red', 'green', '#FFA500', etc. */
+        }
+    </style>
+</head>
+<body>
+    <h1>bienvenido a esta pagina, <span>{{ name }}</span></h1>
+    <h2>esto es todo</h2>
+</body>
+</html>
