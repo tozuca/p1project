@@ -1,3 +1,68 @@
-<!--<h1>Welcome to home page</h1>-->
-<h1>bienvenido a esta pagina, {{name}}</h1>
-<h2>esto es todo</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-3">Lo mejor del cine americano....</h1>
+        <div id="movieCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://i0.wp.com/hotbook.mx/wp-content/uploads/2023/03/all-quentin-tarantino-movies-in-order.jpg?fit=2105%2C1199&ssl=1" class="d-block w-100" alt="Movie 6">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.lavanguardia.com/andro4all/hero/2022/07/mejores-peliculas-quentin-tarantino-netflix.jpg?width=1200" class="d-block w-100" alt="Movie 7">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#movieCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#movieCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <form method="GET" action="">
+            <div class="mb-3">
+                <label for="searchMovie" class="form-label">Search for Movie:</label>
+                <input type="text" class="form-control" name="searchMovie" value="{{ searchTerm }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <p>Searching for {{ searchTerm }}</p>
+        <br />
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for movie in movies %}
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top" src="{{ movie.image.url }}" alt="{{ movie.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{ movie.title }}</h5>
+                        <p class="card-text">{{ movie.description }}</p>
+                        {% if movie.url %}
+                        <a href="{{ movie.url }}" class="btn btn-primary">Movie Link</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <br /><br />
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $('#movieCarousel').carousel();
+    </script>
+    {% endblock content %}
+</body>
+</html>
